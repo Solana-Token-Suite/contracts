@@ -4,7 +4,7 @@ use anchor_lang::prelude::*;
 use anchor_lang::system_program::{transfer, Transfer};
 use anchor_spl::{
     associated_token::AssociatedToken,
-    token_interface::{transfer_checked, Mint, TokenAccount, TokenInterface, TransferChecked},
+    token_interface::{Mint, TokenAccount, TokenInterface},
 };
 
 #[derive(Accounts)]
@@ -64,7 +64,7 @@ pub struct PurchaseToken<'info> {
 }
 
 impl<'info> PurchaseToken<'info> {
-    pub fn purchase_token(&mut self, amount: u64) -> Result<()> {
+    pub fn purchase_token(&mut self, amount: u64, remaining_accounts: &[AccountInfo<'info>]) -> Result<()> {
         let current_time = Clock::get()?.unix_timestamp;
 
         require!(
@@ -105,22 +105,19 @@ impl<'info> PurchaseToken<'info> {
             mint_key.as_ref(),
             &[self.ico_vault_account.bump],
         ];
-        let signer_seeds = &[&seeds[..]];
+        let signer_seeds: &[&[&[u8]]] = &[&seeds[..]];
 
-        let token_accounts = TransferChecked {
-            from: self.vault_ata.to_account_info(),
-            mint: self.mint.to_account_info(),
-            to: self.buyer_ata.to_account_info(),
-            authority: self.ico_vault_account.to_account_info(),
-        };
-
-        let token_ctx = CpiContext::new_with_signer(
-            self.token_program.to_account_info(),
-            token_accounts,
+        spl_token_2022::onchain::invoke_transfer_checked(
+            self.token_program.key,
+            self.vault_ata.to_account_info(),
+            self.mint.to_account_info(),
+            self.buyer_ata.to_account_info(),
+            self.ico_vault_account.to_account_info(),
+            remaining_accounts,
+            amount,
+            self.mint.decimals,
             signer_seeds,
-        );
-
-        transfer_checked(token_ctx, amount, self.mint.decimals)?;
+        )?;
 
         self.ico_config_account.total_raised = new_total_raised;
 
