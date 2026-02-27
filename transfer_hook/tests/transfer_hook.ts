@@ -779,4 +779,76 @@ describe("transfer_hook", () => {
       expect(configAccount.owner.toBase58()).to.equal(payer.publicKey.toBase58());
     });
   });
+    describe("Test_config",async () => {
+      it("fetches and updates config account data correctly", async () => {
+        //const nftMint1 = Keypair.generate();
+      // const tx = await program.methods
+      //   .initializeRegistry(
+      //     null, // openMinute — no trading hour restriction
+      //     null, // closeMinute
+      //     maxTransferAmount,
+      //     minTransferAmount,
+      //     nftMint1.publicKey
+      //   )
+      //   .accountsPartial({
+      //     payer: payer.publicKey,
+      //     treasury: TREASURY,
+      //     mint: mint.publicKey,
+      //     config: configPda,
+      //     extraAccountMetaList: extraAccountMetaListPda,
+      //     systemProgram: SystemProgram.programId,
+      //   })
+      //   .rpc({ commitment: "confirmed" });
+
+        const configAccount = await program.account.configAccount.fetch(configPda);
+        console.log("Config Account Data:", {
+        owner: configAccount.owner.toBase58(),
+        mint: configAccount.mint.toBase58(),
+        nftMintAddress: configAccount.nftMintAddress.toBase58(),
+        whitelistEnabled: configAccount.whitelistEnabled,
+        tradingTimeEnabled: configAccount.tradingTimeEnabled,
+        maxTransferEnabled: configAccount.maxTransferEnabled,
+        nftGated: configAccount.nftGated,
+        maxTransferAmount: configAccount.maxTransferAmount.toString(),
+        minTransferAmount: configAccount.minTransferAmount.toString(),
+        openMinute: configAccount.openMinute,
+        closeMinute: configAccount.closeMinute,
+      });
+
+      const openMin = 3;
+      const cloneMin = 5;
+      const maxTrasnfer = new BN(1000);
+      const minTransfer = new BN(1);
+      const nftMint = Keypair.generate();
+
+      const tx2 = await program.methods.editConfig(
+        openMin, // openMinute — no trading hour restriction
+        cloneMin, // closeMinute
+        maxTrasnfer,
+        minTransfer,
+        nftMint.publicKey
+      )
+      .accountsPartial({
+        owner: payer.publicKey,
+        config: configPda,
+        mint: mint.publicKey,
+      })
+      .rpc({ commitment: "confirmed" });
+
+      const newData = await program.account.configAccount.fetch(configPda);
+      console.log("Updated Config Account Data:", {
+        owner: newData.owner.toBase58(),
+        mint: newData.mint.toBase58(),
+        nftMintAddress: newData.nftMintAddress.toBase58(),
+        whitelistEnabled: newData.whitelistEnabled,
+        tradingTimeEnabled: newData.tradingTimeEnabled,
+        maxTransferEnabled: newData.maxTransferEnabled,
+        nftGated: newData.nftGated,
+        maxTransferAmount: newData.maxTransferAmount.toString(),
+        minTransferAmount: newData.minTransferAmount.toString(),
+        openMinute: newData.openMinute,
+        closeMinute: newData.closeMinute,
+       });
+      });
+    });
 });

@@ -142,6 +142,35 @@ pub mod transfer_hook {
         Ok(())
     }
 
+    pub fn edit_config(
+        ctx: Context<EditConfig>,        
+        open_minute: Option<u16>,
+        close_minute: Option<u16>,
+        max_transfer_amount: Option<u64>,
+        min_transfer_amount: Option<u64>,
+        nft_mint_address: Option<Pubkey>, 
+    ) -> Result<()> {
+        let config = &mut ctx.accounts.config;
+
+        if let (Some(open), Some(close)) = (open_minute, close_minute) {
+            config.open_minute = Some(open);
+            config.close_minute = Some(close);
+        }
+
+        if let (Some(max), Some(min)) = (max_transfer_amount, min_transfer_amount) {
+            require!(max != 0 && min != 0, HookError::InvalidTransferAmount);
+            config.max_transfer_amount = max;
+            config.min_transfer_amount = min;
+        }
+
+        if let Some(mint_address) = nft_mint_address {
+            require!(mint_address != Pubkey::default(), HookError::InvalidPubkey);
+            config.nft_mint_address = mint_address;
+        }
+
+        Ok(())
+    }
+   
     #[instruction(discriminator = &EXECUTE_IX_TAG_LE)]
     pub fn execute(ctx: Context<ExecuteTransfer>, amount: u64) -> Result<()> {
         let config = &ctx.accounts.config;
@@ -234,6 +263,20 @@ pub struct InitializeRegistry<'info> {
 
 #[derive(Accounts)]
 pub struct UpdateConfig<'info> {
+    pub owner: Signer<'info>,
+    
+    #[account(
+        mut,
+        seeds = [b"config", mint.key().as_ref()],
+        bump,
+        has_one = owner @ HookError::Unauthorized 
+    )]
+    pub config: Account<'info, ConfigAccount>,
+    pub mint: InterfaceAccount<'info, Mint>,
+}
+
+#[derive(Accounts)]
+pub struct EditConfig<'info>{
     pub owner: Signer<'info>,
     
     #[account(
@@ -389,4 +432,8 @@ pub enum HookError {
     Unauthorized,
     #[msg("Failed to initialize extra account meta list")]
     MetaListError,
+    #[msg("Invalide pub key")]
+    InvalidPubkey,
+    #[msg("Invalid transfer amount")]
+    InvalidTransferAmount
 }

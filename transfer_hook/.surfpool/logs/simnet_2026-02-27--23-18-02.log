@@ -1,0 +1,84 @@
+[2026-02-27--23-18-02 INFO actix_server::builder] starting 5 workers
+[2026-02-27--23-18-02 INFO actix_server::server] Tokio runtime found; starting in existing Tokio runtime
+[2026-02-27--23-18-02 INFO actix_server::server] starting service: "actix-web-service-127.0.0.1:18488", workers: 5, listening on: 127.0.0.1:18488
+[2026-02-27--23-18-02 INFO parity_ws] Listening for new connections on 127.0.0.1:8900.
+[2026-02-27--23-18-04 INFO txtx::svm::deploy_program] [Recovery Instructions] - An ephemeral authority account will be created and funded to write to the buffer account.
+[2026-02-27--23-18-04 INFO txtx::svm::deploy_program] [Recovery Instructions] - Please save the following information in case the deployment fails and the account needs to be recovered:
+[2026-02-27--23-18-04 INFO txtx::svm::deploy_program] [Recovery Instructions] - Ephemeral authority public key: 5Ch7DSLy8NtBnBdLEdvm6PtXpomTvHa5swftWCCZw6Wi
+[2026-02-27--23-18-04 INFO txtx::svm::deploy_program] [Recovery Instructions] - Ephemeral authority secret key: [92, 144, 11, 254, 153, 246, 60, 65, 113, 226, 215, 183, 114, 100, 70, 37, 192, 14, 26, 244, 66, 118, 254, 115, 4, 205, 151, 20, 97, 132, 57, 15, 62, 109, 124, 99, 225, 134, 55, 171, 89, 233, 195, 56, 107, 98, 12, 133, 51, 146, 57, 21, 233, 34, 43, 118, 229, 206, 211, 94, 148, 95, 232, 255]
+[2026-02-27--23-18-04 INFO txtx::svm::deploy_program] Account Created - Ephemeral authority account created and funded to write to buffer
+[2026-02-27--23-18-04 INFO txtx::svm::deploy_program] [Recovery Instructions] - Creating program buffer account at pubkey HTDLbmEjrM6qmmH8dpCZp3cxJKCEc8FavSH5SDPcqJxR
+[2026-02-27--23-18-05 INFO txtx::svm::deploy_program] Account Created - Program buffer account created
+[2026-02-27--23-18-09 INFO txtx::svm::deploy_program] Buffer Ready - Writing to buffer account is complete
+[2026-02-27--23-18-10 INFO txtx::svm::deploy_program] Program Created - Program AjNBZRCm6jsPjPRiZ3hbAitg9KEgCYqKmGm675Fpi6XU has been deployed
+[2026-02-27--23-18-11 INFO txtx::svm::deploy_program] Complete - Ephemeral authority account closed and leftover funds returned to payer
+[2026-02-27--23-18-19 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:53062.
+[2026-02-27--23-18-19 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:53064.
+[2026-02-27--23-18-21 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:53082.
+[2026-02-27--23-18-22 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:53090.
+[2026-02-27--23-18-22 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-18-22 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-18-22 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-18-22 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-18-23 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-18-23 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-18-26 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-18-26 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-18-26 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-18-26 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-18-30 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-18-30 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-18-30 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:50972.
+[2026-02-27--23-20-00 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:58770.
+[2026-02-27--23-20-00 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:58768.
+[2026-02-27--23-20-02 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:58788.
+[2026-02-27--23-20-03 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:58800.
+[2026-02-27--23-20-04 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-20-04 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-20-04 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-20-04 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-20-04 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-20-04 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-20-07 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-20-07 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-20-08 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-20-08 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-20-12 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-20-12 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-20-12 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:45602.
+[2026-02-27--23-21-25 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:43230.
+[2026-02-27--23-21-25 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:43238.
+[2026-02-27--23-21-27 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:58534.
+[2026-02-27--23-21-28 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:58542.
+[2026-02-27--23-21-29 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-21-29 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-21-29 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-21-29 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-21-29 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-21-29 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-21-32 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-21-32 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-21-32 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-21-32 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-21-37 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-21-37 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-21-37 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:58506.
+[2026-02-27--23-21-43 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:58518.
+[2026-02-27--23-21-44 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:58534.
+[2026-02-27--23-22-20 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:38544.
+[2026-02-27--23-22-20 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:38548.
+[2026-02-27--23-22-21 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:38552.
+[2026-02-27--23-22-23 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:38566.
+[2026-02-27--23-22-23 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-22-23 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-22-23 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-22-23 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-22-23 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-22-23 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-22-27 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-22-27 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-22-27 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-22-27 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-22-31 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-22-31 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-02-27--23-22-31 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:34492.
