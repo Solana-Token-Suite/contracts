@@ -76,26 +76,34 @@ describe("transfer_hook", () => {
   // ============================================================
 
   before(async () => {
-    // Airdrop to all needed accounts
-    const airdropSig1 = await connection.requestAirdrop(
-      payer.publicKey,
-      5 * LAMPORTS_PER_SOL
-    );
-    await connection.confirmTransaction(airdropSig1, "confirmed");
-
-    // Fund the treasury address so it's rent-exempt (required as a writable account)
-    const airdropTreasury = await connection.requestAirdrop(
-      TREASURY,
-      1 * LAMPORTS_PER_SOL
-    );
-    await connection.confirmTransaction(airdropTreasury, "confirmed");
-
-    // Fund unauthorized user
-    const airdropSig2 = await connection.requestAirdrop(
-      unauthorizedUser.publicKey,
-      1 * LAMPORTS_PER_SOL
-    );
-    await connection.confirmTransaction(airdropSig2, "confirmed");
+    // Transfer SOL from env wallet to all accounts that need funds
+    const LAMPORTS_02_SOL = 0.2 * LAMPORTS_PER_SOL;
+    const fundKeypairsTx = new Transaction()
+      .add(
+        SystemProgram.transfer({
+          fromPubkey: payer.publicKey,
+          toPubkey: TREASURY,
+          lamports: LAMPORTS_PER_SOL, // 1 SOL so it's rent-exempt as a writable account
+        }),
+        SystemProgram.transfer({
+          fromPubkey: payer.publicKey,
+          toPubkey: userToWhitelist.publicKey,
+          lamports: LAMPORTS_02_SOL,
+        }),
+        SystemProgram.transfer({
+          fromPubkey: payer.publicKey,
+          toPubkey: unauthorizedUser.publicKey,
+          lamports: LAMPORTS_02_SOL,
+        }),
+        SystemProgram.transfer({
+          fromPubkey: payer.publicKey,
+          toPubkey: destinationWallet.publicKey,
+          lamports: LAMPORTS_02_SOL,
+        })
+      );
+    await sendAndConfirmTransaction(connection, fundKeypairsTx, [payer.payer], {
+      commitment: "confirmed",
+    });
 
     // --- Create Mint with Transfer Hook Extension ---
     const mintLen = getMintLen([ExtensionType.TransferHook]);
@@ -200,13 +208,6 @@ describe("transfer_hook", () => {
     console.log("  ✓ Minted", mintAmount, "tokens to source account");
 
     // --- Create Destination Token Account ---
-    // Fund destination wallet
-    const airdropDest = await connection.requestAirdrop(
-      destinationWallet.publicKey,
-      1 * LAMPORTS_PER_SOL
-    );
-    await connection.confirmTransaction(airdropDest, "confirmed");
-
     destinationTokenAccount = getAssociatedTokenAddressSync(
       mint.publicKey,
       destinationWallet.publicKey,
@@ -257,7 +258,7 @@ describe("transfer_hook", () => {
           extraAccountMetaList: extraAccountMetaListPda,
           systemProgram: SystemProgram.programId,
         })
-        .rpc({ commitment: "confirmed" });
+        .rpc({ skipPreflight: true, commitment: "confirmed" });
 
       const payerBalanceAfter = await connection.getBalance(payer.publicKey);
       const treasuryBalanceAfter = await connection.getBalance(TREASURY);
@@ -269,11 +270,11 @@ describe("transfer_hook", () => {
       const treasuryGainSol = treasuryGainLamports / LAMPORTS_PER_SOL;
 
       console.log(`    tx: ${tx}`);
-      console.log(`    💰 Total Cost to Initialize: ${totalCostSol} SOL (${totalCostLamports} lamports)`);
+      console.log(`    Total Cost to Initialize: ${totalCostSol} SOL (${totalCostLamports} lamports)`);
       console.log(`       - This includes the 0.1 SOL app fee + rent for PDAs + network tx fee`);
-      console.log(`    🏦 Treasury Balance Before: ${treasuryBalanceBefore / LAMPORTS_PER_SOL} SOL`);
-      console.log(`    🏦 Treasury Balance After:  ${treasuryBalanceAfter / LAMPORTS_PER_SOL} SOL`);
-      console.log(`    📈 Treasury Gain:           ${treasuryGainSol} SOL`);
+      console.log(`    Treasury Balance Before: ${treasuryBalanceBefore / LAMPORTS_PER_SOL} SOL`);
+      console.log(`    Treasury Balance After:  ${treasuryBalanceAfter / LAMPORTS_PER_SOL} SOL`);
+      console.log(`    Treasury Gain:           ${treasuryGainSol} SOL`);
 
       // Verify config account was created with correct data
       const configAccount = await program.account.configAccount.fetch(configPda);
@@ -316,7 +317,7 @@ describe("transfer_hook", () => {
           config: configPda,
           mint: mint.publicKey,
         })
-        .rpc({ commitment: "confirmed" });
+        .rpc({ skipPreflight: true, commitment: "confirmed" });
 
       const configAccount = await program.account.configAccount.fetch(configPda);
       expect(configAccount.maxTransferEnabled).to.be.true;
@@ -335,12 +336,13 @@ describe("transfer_hook", () => {
             mint: mint.publicKey,
           })
           .signers([unauthorizedUser])
-          .rpc({ commitment: "confirmed" });
+          .rpc({ skipPreflight: true, commitment: "confirmed" });
 
         expect.fail("Should have thrown an error");
       } catch (err: any) {
         // Should fail with constraint violation (has_one = owner)
-        expect(err.toString()).to.contain("Error");
+        if (err.message === "Should have thrown an error") throw err;
+        // Test passes — transaction was correctly rejected
       }
     });
 
@@ -352,7 +354,7 @@ describe("transfer_hook", () => {
           config: configPda,
           mint: mint.publicKey,
         })
-        .rpc({ commitment: "confirmed" });
+        .rpc({ skipPreflight: true, commitment: "confirmed" });
 
       const configAccount = await program.account.configAccount.fetch(configPda);
       expect(configAccount.whitelistEnabled).to.be.true;
@@ -379,7 +381,7 @@ describe("transfer_hook", () => {
           whitelistMarker: whitelistMarkerPda,
           systemProgram: SystemProgram.programId,
         })
-        .rpc({ commitment: "confirmed" });
+        .rpc({ skipPreflight: true, commitment: "confirmed" });
 
       console.log("    Add to whitelist tx:", tx);
 
@@ -414,7 +416,7 @@ describe("transfer_hook", () => {
             systemProgram: SystemProgram.programId,
           })
           .signers([unauthorizedUser])
-          .rpc({ commitment: "confirmed" });
+          .rpc({ skipPreflight: true, commitment: "confirmed" });
 
         expect.fail("Should have thrown an error");
       } catch (err: any) {
@@ -433,7 +435,7 @@ describe("transfer_hook", () => {
           userPubkey: userToWhitelist.publicKey,
           whitelistMarker: whitelistMarkerPda,
         })
-        .rpc({ commitment: "confirmed" });
+        .rpc({ skipPreflight: true, commitment: "confirmed" });
 
       console.log("    Remove from whitelist tx:", tx);
 
@@ -462,7 +464,7 @@ describe("transfer_hook", () => {
           config: configPda,
           mint: mint.publicKey,
         })
-        .rpc({ commitment: "confirmed" });
+        .rpc({ skipPreflight: true, commitment: "confirmed" });
     });
 
     it("succeeds when transfer amount is within limits", async () => {
@@ -574,7 +576,7 @@ describe("transfer_hook", () => {
           config: configPda,
           mint: mint.publicKey,
         })
-        .rpc({ commitment: "confirmed" });
+        .rpc({ skipPreflight: true, commitment: "confirmed" });
     });
 
     it("fails when sender is not whitelisted", async () => {
@@ -630,7 +632,7 @@ describe("transfer_hook", () => {
           whitelistMarker: payerWhitelistMarker,
           systemProgram: SystemProgram.programId,
         })
-        .rpc({ commitment: "confirmed" });
+        .rpc({ skipPreflight: true, commitment: "confirmed" });
 
       // Now try the transfer — should succeed
       const transferAmount = BigInt(10_000_000_000); // 10 tokens
@@ -674,7 +676,7 @@ describe("transfer_hook", () => {
           config: configPda,
           mint: mint.publicKey,
         })
-        .rpc({ commitment: "confirmed" });
+        .rpc({ skipPreflight: true, commitment: "confirmed" });
     });
 
     it("succeeds with any amount when all gates are off", async () => {
@@ -771,7 +773,7 @@ describe("transfer_hook", () => {
           extraAccountMetaList: extraMeta2Pda,
           systemProgram: SystemProgram.programId,
         })
-        .rpc({ commitment: "confirmed" });
+        .rpc({ skipPreflight: true, commitment: "confirmed" });
 
       const configAccount = await program.account.configAccount.fetch(config2Pda);
       expect(configAccount.openMinute).to.equal(540);
@@ -903,7 +905,7 @@ describe("transfer_hook", () => {
         config: configPda,
         mint: mint.publicKey,
       })
-      .rpc({ commitment: "confirmed" });
+      .rpc({ skipPreflight: true, commitment: "confirmed" });
 
       const newData = await program.account.configAccount.fetch(configPda);
       console.log("Updated Config Account Data:", {

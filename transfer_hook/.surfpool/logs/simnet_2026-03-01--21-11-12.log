@@ -1,0 +1,32 @@
+[2026-03-01--21-11-12 INFO actix_server::builder] starting 5 workers
+[2026-03-01--21-11-12 INFO actix_server::server] Tokio runtime found; starting in existing Tokio runtime
+[2026-03-01--21-11-12 INFO actix_server::server] starting service: "actix-web-service-127.0.0.1:18488", workers: 5, listening on: 127.0.0.1:18488
+[2026-03-01--21-11-13 INFO parity_ws] Listening for new connections on 127.0.0.1:8900.
+[2026-03-01--21-11-14 INFO txtx::svm::deploy_program] [Recovery Instructions] - An ephemeral authority account will be created and funded to write to the buffer account.
+[2026-03-01--21-11-14 INFO txtx::svm::deploy_program] [Recovery Instructions] - Please save the following information in case the deployment fails and the account needs to be recovered:
+[2026-03-01--21-11-14 INFO txtx::svm::deploy_program] [Recovery Instructions] - Ephemeral authority public key: Bu2YRdDQoKP3GwFkJy4CcUCraioZmYSxCKK1JRciRYvw
+[2026-03-01--21-11-14 INFO txtx::svm::deploy_program] [Recovery Instructions] - Ephemeral authority secret key: [26, 217, 7, 78, 77, 20, 245, 156, 175, 124, 81, 98, 22, 17, 85, 253, 200, 98, 255, 78, 85, 164, 120, 154, 65, 148, 84, 250, 194, 171, 254, 64, 161, 232, 208, 141, 97, 248, 221, 93, 160, 17, 250, 57, 65, 237, 27, 18, 20, 4, 45, 49, 217, 104, 141, 23, 95, 208, 41, 148, 70, 49, 176, 68]
+[2026-03-01--21-11-15 INFO txtx::svm::deploy_program] Account Created - Ephemeral authority account created and funded to write to buffer
+[2026-03-01--21-11-15 INFO txtx::svm::deploy_program] [Recovery Instructions] - Creating program buffer account at pubkey EeMxEfSJEjYUtpCqVKTHbXrMF34WGi1Fn6VzkDSgeBn6
+[2026-03-01--21-11-15 INFO txtx::svm::deploy_program] Account Created - Program buffer account created
+[2026-03-01--21-11-24 INFO txtx::svm::deploy_program] Buffer Ready - Writing to buffer account is complete
+[2026-03-01--21-11-24 INFO txtx::svm::deploy_program] Program Created - Program AjNBZRCm6jsPjPRiZ3hbAitg9KEgCYqKmGm675Fpi6XU has been deployed
+[2026-03-01--21-11-25 INFO txtx::svm::deploy_program] Complete - Ephemeral authority account closed and leftover funds returned to payer
+[2026-03-01--21-12-18 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:50964.
+[2026-03-01--21-12-18 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:50962.
+[2026-03-01--21-12-25 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:50968.
+[2026-03-01--21-12-26 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-03-01--21-12-26 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-03-01--21-12-26 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-03-01--21-12-26 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-03-01--21-12-26 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-03-01--21-12-26 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-03-01--21-12-29 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-03-01--21-12-29 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-03-01--21-12-29 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-03-01--21-12-29 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-03-01--21-12-34 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-03-01--21-12-34 ERROR litesvm] Program account 3YXfnw8Lk1PsuwbyRxSjHHVwxxDLiDH1BHohgbZcW4zb is not executable.
+[2026-03-01--21-12-34 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:48876.
+[2026-03-01--21-12-40 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:37460.
+[2026-03-01--21-12-41 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:37476.
